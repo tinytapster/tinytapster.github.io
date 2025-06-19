@@ -9,12 +9,13 @@
       margin: 0;
       background-color: #001f3f;
       color: white;
+      font-family: Arial, sans-serif;
+      font-size: 3rem;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      font-size: 3rem;
+      position: relative;
     }
 
     .glow-text span {
@@ -24,18 +25,9 @@
     }
 
     @keyframes glow {
-      0% {
-        text-shadow: 0 0 0 transparent;
-        color: white;
-      }
-      50% {
-        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
-        color: #00ffff;
-      }
-      100% {
-        text-shadow: 0 0 0 transparent;
-        color: white;
-      }
+      0% { text-shadow: 0 0 0 transparent; color: white; }
+      50% { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff; color: #00ffff; }
+      100% { text-shadow: 0 0 0 transparent; color: white; }
     }
 
     .glow-text.animate span {
@@ -53,9 +45,26 @@
     .glow-text.animate span:nth-child(9) { animation-delay: 0.32s; }
     .glow-text.animate span:nth-child(10) { animation-delay: 0.36s; }
     .glow-text.animate span:nth-child(11) { animation-delay: 0.40s; }
+
+    .privacy-link {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 1rem;
+      text-decoration: none;
+      color: #00ffff;
+      opacity: 0.8;
+    }
+
+    .privacy-link:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
+  <a class="privacy-link" href="privacy.html">Privacy Policy</a>
+
   <div class="glow-text" id="text">
     <span>T</span><span>i</span><span>n</span><span>y</span>
     <span>T</span><span>a</span><span>p</span><span>s</span><span>t</span><span>e</span><span>r</span>
@@ -68,11 +77,11 @@
       text.classList.add('animate');
       setTimeout(() => {
         text.classList.remove('animate');
-      }, 1000); // убираем класс после завершения анимации
+      }, 1000);
     }
 
-    animateGlow(); // стартовая анимация
-    setInterval(animateGlow, 5000); // каждые 5 секунд
+    animateGlow();
+    setInterval(animateGlow, 5000);
   </script>
 </body>
 </html>
