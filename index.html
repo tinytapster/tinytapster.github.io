@@ -7,7 +7,7 @@
   <style>
     body {
       margin: 0;
-      background-color: #001f3f; /* тёмно-синий */
+      background-color: #001f3f;
       color: white;
       display: flex;
       justify-content: center;
@@ -16,9 +16,64 @@
       font-family: Arial, sans-serif;
       font-size: 3rem;
     }
+
+    .glow-text span {
+      display: inline-block;
+      opacity: 0.8;
+      transition: text-shadow 0.3s ease, color 0.3s ease;
+    }
+
+    @keyframes glow {
+      0% {
+        text-shadow: 0 0 0 transparent;
+        color: white;
+      }
+      50% {
+        text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+        color: #00ffff;
+      }
+      100% {
+        text-shadow: 0 0 0 transparent;
+        color: white;
+      }
+    }
+
+    .glow-text.animate span {
+      animation: glow 1s ease-in-out;
+    }
+
+    .glow-text.animate span:nth-child(1) { animation-delay: 0s; }
+    .glow-text.animate span:nth-child(2) { animation-delay: 0.1s; }
+    .glow-text.animate span:nth-child(3) { animation-delay: 0.2s; }
+    .glow-text.animate span:nth-child(4) { animation-delay: 0.3s; }
+    .glow-text.animate span:nth-child(5) { animation-delay: 0.4s; }
+    .glow-text.animate span:nth-child(6) { animation-delay: 0.5s; }
+    .glow-text.animate span:nth-child(7) { animation-delay: 0.6s; }
+    .glow-text.animate span:nth-child(8) { animation-delay: 0.7s; }
+    .glow-text.animate span:nth-child(9) { animation-delay: 0.8s; }
+    .glow-text.animate span:nth-child(10) { animation-delay: 0.9s; }
+    .glow-text.animate span:nth-child(11) { animation-delay: 1.0s; }
   </style>
 </head>
 <body>
-  TinyTapster
+  <div class="glow-text" id="text">
+    <!-- Каждую букву оборачиваем в span -->
+    <span>T</span><span>i</span><span>n</span><span>y</span>
+    <span>T</span><span>a</span><span>p</span><span>s</span><span>t</span><span>e</span><span>r</span>
+  </div>
+
+  <script>
+    const text = document.getElementById('text');
+
+    function animateGlow() {
+      text.classList.add('animate');
+      setTimeout(() => {
+        text.classList.remove('animate');
+      }, 2000); // Убираем класс после окончания анимации
+    }
+
+    animateGlow(); // Первая анимация при загрузке
+    setInterval(animateGlow, 5000); // Повторяем каждые 5 секунд
+  </script>
 </body>
 </html>
